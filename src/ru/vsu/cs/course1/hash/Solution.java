@@ -20,18 +20,20 @@ public class Solution {
         for (Iterator<String> it = fileStream.iterator(); it.hasNext(); ) {
             String str = it.next();
             String[] marksArray = str.split(";");
-            String itemName = marksArray[0];
-            String studentName = marksArray[1];
-            String mark = marksArray[2];
-            if(data.get(mark) == null)
-                data.put(studentName,new StudentMarks());
-            StudentMarks marks =  data.get(studentName);
-            marks.addMarks(itemName,mark);
+            if(marksArray.length == 3) {
+                String itemName = marksArray[0];
+                String studentName = marksArray[1];
+                String mark = marksArray[2];
+                if (data.get(studentName) == null)
+                    data.put(studentName, new StudentMarks());
+                StudentMarks marks = data.get(studentName);
+                marks.addMarks(itemName, mark);
+            }
         }
         return data;
     }
 
-    public static void Solution(Map<String,StudentMarks> marks){
+    public static Map<StudentMarks,List<String>> Solution(Map<String,StudentMarks> marks){
         Map<StudentMarks,List<String>> resultMap = new HashMap<>();
 
         List<Map.Entry<String,StudentMarks>> list = new ArrayList<>();
@@ -42,20 +44,17 @@ public class Solution {
         list.sort(new myComparator());
 
 
-        for(int i=0 , hash = list.get(i).getValue().getHash();i<list.size();i++){
-            if(resultMap.get(list.get(i).getValue()) == null)
-                resultMap.put(list.get(i).getValue(),new ArrayList<String>());
+        for(int i=0 ;i<list.size();i++){
+            StudentMarks studentMarks = list.get(i).getValue();
+            if(resultMap.get(studentMarks) == null)
+                resultMap.put(studentMarks,new ArrayList<String>());
 
-            
-
-            if(hash == list.get(i).getValue().getHash())
-            {
-
-            }
+            ArrayList<String> nameList = (ArrayList<String>) resultMap.get(studentMarks);
+            nameList.add(list.get(i).getKey());
         }
-        for(Map.Entry<String,StudentMarks> entry:list){
 
-        }
+        return resultMap;
+
 
 
 
