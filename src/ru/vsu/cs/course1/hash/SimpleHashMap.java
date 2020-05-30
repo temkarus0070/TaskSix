@@ -15,7 +15,7 @@ import ru.vsu.cs.util.dummy.DefaultNotSupportedSet;
  * @param <K>
  * @param <V>
  */
-public class SimpleHashMap<K, V> implements DefaultNotSupportedMap<K, V> {
+public class SimpleHashMap<K, V> implements DefaultNotSupportedMap<K, V> , Map<K,V>{
 
     private class EntryListItem implements Map.Entry<K, V> {
 

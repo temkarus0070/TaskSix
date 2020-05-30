@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:controller="MainController" xmlns:fx="http://javafx.com/fxml/1">
+<Button onAction="#click" text="Открыть файл" fx:id="openButton" xmlns:fx="http://javafx.com/fxml/1" >
+
+    </Button>
+
+<Button fx:id="runButton" onAction="#run" text="Запустить"></Button>
+    <Button fx:id="myRunButton" onAction="#myRun" text="Запустить с 'моей' хеш таблицей  "></Button>
+
+    <TableView fx:id="table" minHeight="900" minWidth="900">
+
+    </TableView>
+</VBox>
