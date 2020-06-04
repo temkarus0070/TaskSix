@@ -20,43 +20,34 @@ public class StudentMarks implements  Comparable<StudentMarks>{
         return this.hash;
     }
 
+
+
+
     @Override
     public int compareTo(StudentMarks o) {
-        int thisHashSum = 0;
-        int hashSum = 0;
-       // double multiple = 0.01;
-        int count = 0;
-        for(Map.Entry<String,String> entry: marks.entrySet())
-        {
-            String itemName = entry.getKey();
-            String thisMark = entry.getValue();
-            thisHashSum += thisMark.hashCode();
-            String mark = o.getMarks().get(itemName);
-            if(mark  != null)
-                hashSum += mark.hashCode();
-      //      multiple += 0.01;
-
-        }
-        this.hash = thisHashSum;
-        o.hash = hashSum;
-        if(thisHashSum == hashSum){
+        if(hashCode() == o.hashCode())
             return 0;
-        }
-        else if(thisHashSum> hashSum)
+        else if(hashCode() > o.hashCode())
             return 1;
-        else return -1;
+        else
+            return -1;
     }
 
     @Override
     public boolean equals(Object obj){
-        StudentMarks obj1 = (StudentMarks) obj;
-        if(obj1.hash == this.hash)
-            return true;
-        else return false;
+        return hashCode() == obj.hashCode();
     }
 
     @Override
     public int hashCode(){
-        return hash;
+        int hashSum = 0;
+        for(Map.Entry<String,String> entry: marks.entrySet())
+        {
+            String thisMark = entry.getValue();
+            hashSum += thisMark.hashCode();
+        }
+        return hashSum;
     }
+
+
 }

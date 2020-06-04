@@ -57,22 +57,14 @@ public class Solution {
 
     public static Map<StudentMarks,List<String>> solution(Map<String,StudentMarks> marks){
         Map<StudentMarks,List<String>> resultMap = new HashMap<>();
+        for(Iterator<Map.Entry<String, StudentMarks>> iter = marks.entrySet().iterator();iter.hasNext();){
 
-        List<Map.Entry<String,StudentMarks>> list = new ArrayList<>();
-        for(Iterator iter = marks.entrySet().iterator();iter.hasNext();){
-            Map.Entry<String,StudentMarks> mapEntry = (Map.Entry<String, StudentMarks>) iter.next();
-            list.add(mapEntry);
-        }
-        list.sort(new myComparator());
-
-
-        for(int i=0 ;i<list.size();i++){
-            StudentMarks studentMarks = list.get(i).getValue();
-            if(resultMap.get(studentMarks) == null)
-                resultMap.put(studentMarks,new ArrayList<String>());
-
-            ArrayList<String> nameList = (ArrayList<String>) resultMap.get(studentMarks);
-            nameList.add(list.get(i).getKey());
+            Map.Entry<String,StudentMarks> mapEntry = iter.next();
+            List<String> list  = resultMap.get(mapEntry.getValue());
+            if(list == null)
+                resultMap.put(mapEntry.getValue(),new ArrayList<>());
+            list  = resultMap.get(mapEntry.getValue());
+            list.add(mapEntry.getKey());
         }
 
         return resultMap;
@@ -85,31 +77,16 @@ public class Solution {
 
 
     public static SimpleHashMap<StudentMarks,List<String>> mySolution(SimpleHashMap<String,StudentMarks> marks){
-        SimpleHashMap resultMap = new SimpleHashMap<StudentMarks,List<String>>(300);
-
-        List<SimpleHashMap.Entry<String,StudentMarks>> list = new ArrayList<>();
-        for(Iterator iter = marks.entrySet().iterator();iter.hasNext();){
-            SimpleHashMap.Entry<String,StudentMarks> mapEntry = (SimpleHashMap.Entry<String, StudentMarks>) iter.next();
-            list.add(mapEntry);
+        SimpleHashMap<StudentMarks,List<String>> resultMap = new SimpleHashMap<>(300);
+        for(Iterator<SimpleHashMap.Entry<String, StudentMarks>> iter = marks.entrySet().iterator();iter.hasNext();){
+            SimpleHashMap.Entry<String,StudentMarks> mapEntry = iter.next();
+            List<String> list  = resultMap.get(mapEntry.getValue());
+            if(list == null)
+                resultMap.put(mapEntry.getValue(),new ArrayList<>());
+            list  = resultMap.get(mapEntry.getValue());
+            list.add(mapEntry.getKey());
         }
-        list.sort(new myComparator());
-
-
-        for(int i=0 ;i<list.size();i++){
-            StudentMarks studentMarks = list.get(i).getValue();
-            if(resultMap.get(studentMarks) == null)
-                resultMap.put(studentMarks,new ArrayList<String>());
-
-            ArrayList<String> nameList = (ArrayList<String>) resultMap.get(studentMarks);
-            nameList.add(list.get(i).getKey());
-        }
-
         return resultMap;
-
-
-
-
-
     }
 
 
