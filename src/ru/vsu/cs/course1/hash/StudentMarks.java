@@ -7,21 +7,12 @@ import java.util.Map;
 
 public class StudentMarks implements  Comparable<StudentMarks>{
     private Map<String,String> marks = new HashMap<>();
-    private int hash = 0;
     public void addMarks(String itemName,String mark){
         this.marks.put(itemName, mark);
     }
-
     public Map<String,String> getMarks(){
         return this.marks;
     }
-
-    public int getHash(){
-        return this.hash;
-    }
-
-
-
 
     @Override
     public int compareTo(StudentMarks o) {

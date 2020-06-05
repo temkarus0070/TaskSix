@@ -55,32 +55,11 @@ public class Solution {
         return data;
     }
 
-    public static Map<StudentMarks,List<String>> solution(Map<String,StudentMarks> marks){
-        Map<StudentMarks,List<String>> resultMap = new HashMap<>();
-        for(Iterator<Map.Entry<String, StudentMarks>> iter = marks.entrySet().iterator();iter.hasNext();){
-
-            Map.Entry<String,StudentMarks> mapEntry = iter.next();
-            List<String> list  = resultMap.get(mapEntry.getValue());
-            if(list == null)
-                resultMap.put(mapEntry.getValue(),new ArrayList<>());
-            list  = resultMap.get(mapEntry.getValue());
-            list.add(mapEntry.getKey());
-        }
-
-        return resultMap;
-
-
-
-
-
-    }
-
-
-    public static SimpleHashMap<StudentMarks,List<String>> mySolution(SimpleHashMap<String,StudentMarks> marks){
-        SimpleHashMap<StudentMarks,List<String>> resultMap = new SimpleHashMap<>(300);
-        for(Iterator<SimpleHashMap.Entry<String, StudentMarks>> iter = marks.entrySet().iterator();iter.hasNext();){
-            SimpleHashMap.Entry<String,StudentMarks> mapEntry = iter.next();
-            List<String> list  = resultMap.get(mapEntry.getValue());
+    public static<K,V> SimpleHashMap<V,List<K>> universeSolution(Map<K,V> marks){
+        SimpleHashMap<V,List<K>> resultMap = new SimpleHashMap<>(300);
+        for(Iterator<SimpleHashMap.Entry<K, V>> iter = marks.entrySet().iterator();iter.hasNext();){
+            SimpleHashMap.Entry<K,V> mapEntry = iter.next();
+            List<K> list  = resultMap.get(mapEntry.getValue());
             if(list == null)
                 resultMap.put(mapEntry.getValue(),new ArrayList<>());
             list  = resultMap.get(mapEntry.getValue());
@@ -88,6 +67,9 @@ public class Solution {
         }
         return resultMap;
     }
+
+
+
 
 
 
