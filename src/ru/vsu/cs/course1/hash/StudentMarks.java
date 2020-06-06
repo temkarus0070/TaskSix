@@ -6,12 +6,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StudentMarks implements  Comparable<StudentMarks>{
+    public  int order;
     private Map<String,String> marks = new HashMap<>();
     public void addMarks(String itemName,String mark){
         this.marks.put(itemName, mark);
     }
     public Map<String,String> getMarks(){
         return this.marks;
+    }
+
+
+    @Override
+    public String toString() {
+        return String.format("%d group", order);
     }
 
     @Override
@@ -26,6 +33,8 @@ public class StudentMarks implements  Comparable<StudentMarks>{
 
     @Override
     public boolean equals(Object obj){
+        if(!(obj instanceof StudentMarks))
+            return false;
         int count = marks.size();
         int findCount = 0;
         StudentMarks differenceMarks = (StudentMarks) obj;
@@ -53,6 +62,4 @@ public class StudentMarks implements  Comparable<StudentMarks>{
         }
         return hashSum;
     }
-
-
 }

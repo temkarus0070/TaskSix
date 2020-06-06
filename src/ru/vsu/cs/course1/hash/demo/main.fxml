@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -13,8 +9,17 @@
 
 <Button fx:id="runButton" onAction="#run" text="Запустить"></Button>
     <Button fx:id="myRunButton" onAction="#myRun" text="Запустить с 'моей' хеш таблицей  "></Button>
+    <HBox>
+        <ListView fx:id="groupList" >
 
-    <TableView fx:id="table" minHeight="900" minWidth="900">
+        </ListView>
 
-    </TableView>
+        <TableView fx:id="marksTable" >
+
+        </TableView>
+        <TableView fx:id="studentTable">
+
+        </TableView>
+    </HBox>
+
 </VBox>

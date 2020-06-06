@@ -3,12 +3,10 @@ import javafx.beans.property.SimpleStringProperty;
 public class tableData {
     private final SimpleStringProperty itemName;
     private final SimpleStringProperty itemMark;
-    private final SimpleStringProperty studentName;
 
-    public tableData(String itemName,String itemMark, String studentName){
+    public tableData(String itemName,String itemMark){
         this.itemName = new SimpleStringProperty(itemName);
         this.itemMark = new SimpleStringProperty(itemMark);
-        this.studentName = new SimpleStringProperty(studentName);
     }
 
     public String getItemName() {
@@ -19,8 +17,5 @@ public class tableData {
         return itemMark.get();
     }
 
-    public String getStudentName() {
-        return studentName.get();
-    }
 
 }

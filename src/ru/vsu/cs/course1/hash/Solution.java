@@ -55,10 +55,10 @@ public class Solution {
         return data;
     }
 
-    public static<K,V> SimpleHashMap<V,List<K>> universeSolution(Map<K,V> marks){
-        SimpleHashMap<V,List<K>> resultMap = new SimpleHashMap<>(300);
-        for(Iterator<SimpleHashMap.Entry<K, V>> iter = marks.entrySet().iterator();iter.hasNext();){
-            SimpleHashMap.Entry<K,V> mapEntry = iter.next();
+    public static<K,V> Map<V,List<K>> universeSolution(Map<K,V> marks){
+        Map<V,List<K>> resultMap = new HashMap<>();
+        for(Iterator<Map.Entry<K, V>> iter = marks.entrySet().iterator();iter.hasNext();){
+            Map.Entry<K,V> mapEntry = iter.next();
             List<K> list  = resultMap.get(mapEntry.getValue());
             if(list == null)
                 resultMap.put(mapEntry.getValue(),new ArrayList<>());
