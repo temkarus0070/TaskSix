@@ -26,7 +26,19 @@ public class StudentMarks implements  Comparable<StudentMarks>{
 
     @Override
     public boolean equals(Object obj){
-        return hashCode() == obj.hashCode();
+        int count = marks.size();
+        int findCount = 0;
+        StudentMarks differenceMarks = (StudentMarks) obj;
+        for(Map.Entry<String,String> entry: marks.entrySet())
+        {
+            String itemName = entry.getKey();
+            String thisMark = entry.getValue();
+            String differenceMark = differenceMarks.marks.get(itemName);
+            if(differenceMark.equals(thisMark))
+                findCount++;
+        }
+        return findCount == count;
+
     }
 
     @Override
@@ -34,7 +46,9 @@ public class StudentMarks implements  Comparable<StudentMarks>{
         int hashSum = 0;
         for(Map.Entry<String,String> entry: marks.entrySet())
         {
+            String itemName = entry.getKey();
             String thisMark = entry.getValue();
+            hashSum += itemName.hashCode();
             hashSum += thisMark.hashCode();
         }
         return hashSum;
